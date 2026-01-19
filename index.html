@@ -1,122 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Starz-N-Black | Nonprofit Organization</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starz-N-Black | Community Nonprofit</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #000;
-      color: #fff;
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(circle at top, #111, #000);
+    color: #fff;
+    text-align: center;
+    scroll-behavior: smooth;
+  }
 
-    header {
-      padding: 40px 20px;
-    }
+  /* STAR BACKGROUND */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(gold 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.08;
+    animation: drift 60s linear infinite;
+    z-index: -1;
+  }
 
-    header img {
-      width: 140px;
-      margin-bottom: 20px;
-    }
+  @keyframes drift {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+  }
 
-    h1, h2 {
-      color: gold;
-    }
+  header {
+    padding: 80px 20px 40px;
+  }
 
-    section {
-      padding: 60px 20px;
-    }
+  header img {
+    width: 150px;
+    animation: fadeIn 1.5s ease;
+  }
 
-    img.main-image {
-      max-width: 90%;
-      border-radius: 16px;
-      box-shadow: 0 0 25px gold;
-      margin-top: 30px;
-    }
+  h1, h2 {
+    color: gold;
+    margin-bottom: 10px;
+  }
 
-    .buttons {
-      margin-top: 30px;
-    }
+  section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: auto;
+  }
 
-    .btn {
-      display: inline-block;
-      padding: 15px 30px;
-      margin: 10px;
-      background: gold;
-      color: black;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-    }
+  p {
+    max-width: 800px;
+    margin: 10px auto;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
 
-    .btn:hover {
-      box-shadow: 0 0 15px gold;
-    }
+  img.main-image {
+    max-width: 90%;
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,215,0,.6);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 1s ease;
+  }
 
-    footer {
-      padding: 50px 20px;
-      border-top: 1px solid gold;
-    }
-  </style>
+  img.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .buttons {
+    margin-top: 30px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 16px 34px;
+    margin: 10px;
+    background: gold;
+    color: black;
+    border-radius: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all .3s ease;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: gold;
+    border: 2px solid gold;
+  }
+
+  .btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 20px gold;
+  }
+
+  /* SERVICES */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+  }
+
+  .card {
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255,215,0,.3);
+    transition: transform .3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+  }
+
+  footer {
+    padding: 60px 20px;
+    border-top: 1px solid gold;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER / LOGO -->
-  <header>
-    <img src="starz-n-black-logo.png" alt="Starz-N-Black Logo">
-    <h1>Starz-N-Black</h1>
-    <p>
-      A nonprofit organization based in Davenport, Iowa serving
-      the Quad Cities and surrounding areas.
-    </p>
-  </header>
+<header>
+  <img src="starz-n-black-logo.png" alt="Starz-N-Black Logo">
+  <h1>Starz-N-Black</h1>
+  <p>Serving Davenport, Iowa and the Quad Cities through compassion, action, and community.</p>
 
-  <!-- HERO -->
-  <section>
-    <img class="main-image" src="starz-n-black-hero.png" alt="Starz-N-Black Hero">
-    <div class="buttons">
-      <a href="#donate" class="btn">Support the Mission</a>
-      <a href="#join" class="btn">Join the Team</a>
+  <div class="buttons">
+    <a href="#contact" class="btn">Support the Mission</a>
+    <a href="mailto:Coco.24aa13@gmail.com?subject=Joining%20Starz-N-Black" class="btn btn-outline">
+      Join the Team
+    </a>
+  </div>
+</header>
+
+<section>
+  <img class="main-image" src="starz-n-black-hero.png">
+</section>
+
+<section>
+  <h2>What We Do</h2>
+  <p>
+    Starz-N-Black is committed to uplifting our community by meeting people where they are
+    and providing real, immediate support.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>🍽 Hot Meals</h3>
+      <p>Providing warm meals to individuals experiencing homelessness.</p>
     </div>
-  </section>
+    <div class="card">
+      <h3>🥫 Food Pantry</h3>
+      <p>Helping families access groceries and essential items.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Outreach</h3>
+      <p>Connecting people with resources, care, and community.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- COMMUNITY -->
-  <section>
-    <h2>Community Outreach</h2>
-    <p>
-      Starz-N-Black provides hot meals for the homeless, food pantry support,
-      and essential resources for individuals and families in need.
-    </p>
-    <img class="main-image" src="starz-n-black-community.png" alt="Community Outreach">
-  </section>
+<section>
+  <h2>Community Impact</h2>
+  <img class="main-image" src="starz-n-black-community.png">
+</section>
 
-  <!-- IMPACT -->
-  <section>
-    <h2>Our Impact</h2>
-    <p>
-      Through generosity, volunteers, and donors, we continue to create
-      positive change and strengthen our community.
-    </p>
-    <img class="main-image" src="starz-n-black-impact.png" alt="Starz-N-Black Impact">
-  </section>
+<section>
+  <h2>Why It Matters</h2>
+  <p>
+    Every meal served, every family helped, and every volunteer matters.
+    Together, we create hope and change.
+  </p>
+  <img class="main-image" src="starz-n-black-impact.png">
+</section>
 
-  <!-- CONTACT -->
-  <footer id="join">
-    <h2>Get Involved</h2>
-    <p>
-      Want to donate or join the Starz-N-Black team?
-      Contact us today.
-    </p>
-    <p><strong>Founder:</strong> Annette Allen</p>
-    <p><strong>Phone:</strong> 563-949-3877</p>
-    <p><strong>Email:</strong> Coco.24aa13@gmail.com</p>
-    <p id="donate">© Starz-N-Black | Davenport, Iowa</p>
-  </footer>
+<footer id="contact">
+  <h2>Get Involved</h2>
+  <p><strong>Founder:</strong> Annette Allen</p>
+  <p><strong>Phone:</strong> 563-949-3877</p>
+  <p><strong>Email:</strong> Coco.24aa13@gmail.com</p>
+  <p>© Starz-N-Black | Davenport, Iowa</p>
+</footer>
+
+<script>
+  const images = document.querySelectorAll('.main-image');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  images.forEach(img => observer.observe(img));
+</script>
 
 </body>
 </html>
