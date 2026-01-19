@@ -15,7 +15,7 @@
 
 body {
   color: #fff;
-  background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
+  background: #000;
   overflow-x: hidden;
 }
 
@@ -25,11 +25,10 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(2px 2px at 10% 20%, gold, transparent),
-    radial-gradient(1.5px 1.5px at 40% 60%, gold, transparent),
-    radial-gradient(1px 1px at 80% 30%, gold, transparent),
-    radial-gradient(1.2px 1.2px at 60% 80%, gold, transparent);
-  animation: starsFall 18s linear infinite;
+    radial-gradient(2px 2px at 20% 10%, gold, transparent),
+    radial-gradient(1.5px 1.5px at 60% 30%, gold, transparent),
+    radial-gradient(1px 1px at 80% 70%, gold, transparent);
+  animation: starsFall 20s linear infinite;
   opacity: 0.25;
   z-index: -1;
 }
@@ -39,45 +38,60 @@ body::before {
   to { transform: translateY(200px); }
 }
 
-/* 🌟 HERO (FIRST THING SEEN) */
+/* 🌟 HERO FULL WIDTH */
 .hero {
+  position: relative;
   min-height: 100vh;
+  background: url('starz-n-black-hero.png') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 10%;
-  gap: 50px;
+  text-align: center;
+  padding: 40px 20px;
 }
 
-.hero img {
-  width: 50%;
-  border-radius: 25px;
-  box-shadow: 0 0 40px rgba(255,215,0,0.6);
-  animation: fadeIn 2s ease;
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
 }
 
-.hero-text {
-  max-width: 520px;
-  animation: slideUp 1.5s ease;
+.hero-content {
+  position: relative;
+  max-width: 800px;
+  z-index: 1;
 }
 
-.hero-text h1 {
-  font-size: 3.4rem;
+/* ✨ TITLE EFFECT */
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
   color: gold;
   margin-bottom: 20px;
+  text-shadow:
+    0 0 10px rgba(255,215,0,0.8),
+    0 0 30px rgba(255,215,0,0.6),
+    0 0 60px rgba(255,215,0,0.4);
+  animation: shimmer 3s infinite alternate;
 }
 
-.hero-text p {
-  font-size: 1.15rem;
+@keyframes shimmer {
+  from { text-shadow: 0 0 10px gold; }
+  to { text-shadow: 0 0 30px gold, 0 0 60px gold; }
+}
+
+.hero p {
+  font-size: 1.2rem;
   line-height: 1.7;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
+/* 🔘 BUTTONS */
 .buttons a {
   display: inline-block;
-  padding: 14px 30px;
-  margin-right: 15px;
-  background: gold;
+  margin: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, gold, #ffd700);
   color: #000;
   text-decoration: none;
   font-weight: bold;
@@ -97,12 +111,12 @@ section {
 }
 
 section h2 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   color: gold;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
-/* WHAT WE DO */
+/* CARDS */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -110,11 +124,10 @@ section h2 {
 }
 
 .card {
-  background: linear-gradient(145deg, #1b1b1b, #000);
+  background: linear-gradient(145deg, #1a1a1a, #000);
   padding: 35px;
   border-radius: 25px;
-  box-shadow: 0 0 30px rgba(255,215,0,0.3);
-  animation: fadeIn 2s ease;
+  box-shadow: 0 0 30px rgba(255,215,0,0.25);
 }
 
 /* IMAGE SECTIONS */
@@ -126,47 +139,16 @@ section h2 {
   margin-top: 30px;
 }
 
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 35px;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 25px;
-  transition: transform 0.4s ease;
-}
-
-.gallery img:hover {
-  transform: scale(1.06);
-}
-
-/* LOGO AT BOTTOM */
-.logo-footer img {
-  width: 70px;
-  opacity: 0.85;
-  margin-bottom: 15px;
-}
-
 /* FOOTER */
 footer {
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
-  font-size: 0.9rem;
   color: #aaa;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+footer img {
+  width: 70px;
+  margin-bottom: 25px;
 }
 </style>
 </head>
@@ -174,67 +156,57 @@ footer {
 <body>
 
 <!-- HERO -->
-<section class="hero">
-  <img src="starz-n-black-hero.png" alt="Starz-N-Black Community Outreach">
-  <div class="hero-text">
+<div class="hero">
+  <div class="hero-content">
     <h1>Starz-N-Black</h1>
     <p>
-      Starz-N-Black is a nonprofit organization serving Davenport, Iowa,
-      the Quad Cities, and surrounding areas by providing hot meals,
-      food pantry support, and uplifting community outreach.
+      Serving Davenport, Iowa and the Quad Cities through hot meals,
+      food pantry support, and community outreach rooted in dignity and love.
     </p>
     <div class="buttons">
       <a href="mailto:Coco.24aa13@gmail.com">Support the Mission</a>
       <a href="mailto:Coco.24aa13@gmail.com">Join the Team</a>
     </div>
   </div>
-</section>
+</div>
 
 <!-- WHAT WE DO -->
 <section>
   <h2>What We Do</h2>
   <div class="cards">
-    <div class="card">Provide hot meals to individuals and families experiencing hardship</div>
-    <div class="card">Support food pantries and emergency food access</div>
-    <div class="card">Strengthen communities through care, dignity, and service</div>
+    <div class="card">Hot meals for individuals and families in need</div>
+    <div class="card">Food pantry access and emergency support</div>
+    <div class="card">Community outreach and neighborhood care</div>
   </div>
 </section>
 
-<!-- COMMUNITY IMAGE -->
+<!-- COMMUNITY -->
 <section class="image-section">
   <h2>Serving Our Community</h2>
-  <p>Every act of service strengthens our neighborhoods and restores hope.</p>
-  <img src="starz-n-black-community.png" alt="Community Service">
+  <img src="starz-n-black-community.png">
 </section>
 
-<!-- IMPACT IMAGE -->
+<!-- IMPACT -->
 <section class="image-section">
   <h2>Our Impact</h2>
-  <p>Through consistency, compassion, and commitment, we create real change.</p>
-  <img src="starz-n-black-impact.png" alt="Community Impact">
+  <img src="starz-n-black-impact.png">
 </section>
 
-<!-- NEW IMAGE SECTION 1 -->
+<!-- OUTREACH -->
 <section class="image-section">
   <h2>Outreach in Action</h2>
-  <p>Meeting people where they are and responding with love and respect.</p>
-  <img src="starz-n-black-outreach.png" alt="Outreach">
+  <img src="starz-n-black-outreach.png">
 </section>
 
-<!-- NEW IMAGE SECTION 2 -->
+<!-- TEAM -->
 <section class="image-section">
   <h2>The Heart of Our Team</h2>
-  <p>Dedicated individuals united by service, compassion, and purpose.</p>
-  <img src="starz-n-black-team.png" alt="Team">
+  <img src="starz-n-black-team.png">
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER WITH BUTTONS -->
 <footer>
-  <div class="logo-footer">
-    <img src="starz-n-black-logo.png" alt="Starz-N-Black Logo">
-  </div>
-  © Starz-N-Black • Davenport, Iowa • Serving the Quad Cities
-</footer>
-
-</body>
-</html>
+  <img src="starz-n-black-logo.png" alt="Starz-N-Black Logo">
+  <div class="buttons">
+    <a href="mailto:Coco.24aa13@gmail.com">Support the Mission</a>
+   
